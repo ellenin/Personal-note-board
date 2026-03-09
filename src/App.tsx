@@ -1,10 +1,10 @@
 import { css, ThemeProvider } from "@emotion/react";
 import { useEffect, useMemo, useState } from "react";
 
-import { NoteCounter } from "./components/NoteCounter";
-import { NoteForm } from "./components/NoteForm";
-import { NotesList } from "./components/NotesList";
-import { ThemeSwitcher } from "./components/ThemeSwitcher";
+import { NoteCounter } from "./components/NoteCounter/NoteCounter";
+import { NoteForm } from "./components/NoteForm/NoteForm";
+import { NotesList } from "./components/NotesList/NotesList";
+import { ThemeSwitcher } from "./components/ThemeSwitcher/ThemeSwitcher";
 
 import { darkTheme } from "./theme/darkTheme";
 import { lightTheme } from "./theme/lightTheme";
@@ -82,19 +82,23 @@ export default function App() {
   };
 
   const pageStyles = (theme: typeof lightTheme) => css`
-    min-height: 100vh;
+    height: 100vh;
     padding: 24px;
     background: ${theme.colors.background};
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: stretch;
+    overflow: hidden;
   `;
 
   const layoutStyles = css`
     max-width: 700px;
     width: 100%;
-    display: grid;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     gap: 16px;
+    min-height: 0;
   `;
 
   const hrStyles = (theme: typeof lightTheme) => css`
